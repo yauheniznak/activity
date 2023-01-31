@@ -4,20 +4,20 @@ import './App.css';
 function App() {
    const [tips,setTips] = useState ("");
 
- const abc = async()=>{
+ const getNewTip = async()=>{
   const response = await fetch (`http://www.boredapi.com/api/activity/`);
   const data = await response.json();
   setTips(data.activity);
  }
 
  useEffect(()=>{
-  abc()
+  getNewTip()
  }, []);
 
   return (
     <div className="container">
 <p>{tips}</p>
-<button onClick={abc} >Find your activity today...</button>
+<button onClick={getNewTip} >Find your activity today...</button>
     </div>
   )
 }
